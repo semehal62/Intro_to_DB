@@ -8,5 +8,12 @@ except:
             print(f"Database '{database_name}' already exists.")
 else:
     print("Database 'alx_book_store' created successfully! ")
+    mydb = mysql.connector.connect(
+    host="localhost",
+    user="yourusername",
+    password="yourpassword",
+    database="yourdatabase"
+)
+
 finally:
     mycursor.close()  
