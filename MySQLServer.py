@@ -1,19 +1,12 @@
 import mysql.connector
 
-data_base_name = "alx_book_store"
 mycursor = mydb.cursor()
-mycursor.excute(f"CREATE DATABASE IF NOT EXISTS {data_base_name}")
-# Replace with your connection details
-mydb = mysql.connector.connect(
-    host="localhost",
-    user="yourusername",
-    password="yourpassword",
-    database="alx_book_store"
-)
-
-
-# Execute SQL statements using the execute() method on the cursor
-
-# Close connection to the databasse  
-mycursor.close()
-mydb.close()
+try:
+    mycursor.excute("CREATE DATABASE IF NOT EXISTS alx_book_store")
+except:
+     if err.errno == 1007:  # Error code for "Can't create database; database exists"
+            print(f"Database '{database_name}' already exists.")
+else:
+    print("Database 'alx_book_store' created successfully! ")
+finally:
+    mycursor.close()  
